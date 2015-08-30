@@ -1,0 +1,377 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: admin
+ * Date: 9/28/2014
+ * Time: 4:48 PM
+ */
+
+namespace GeoStory\Controller;
+
+use Doctrine\ORM\Tools\Pagination\Paginator;
+use GeoStory\Entity;
+use Zend\Mvc\Controller\AbstractActionController;
+use Zend\View\Model\JsonModel;
+use Zend\View\Model\ViewModel;
+use GeoStory\Model\ActionType;
+
+
+class GeoStoryController extends AbstractActionController
+{
+    /**
+     * @var UserService
+     */
+    protected $userService;
+
+
+    public function indexAction()
+    {
+
+    }
+
+
+    public function echoAction()
+    {
+        $data = $this->params()->fromJson();
+        if ($data){
+            return new JsonModel(
+                array(
+                    'data' =>$this->params()->fromJson(),
+                     "received content" => $this->getRequest()->toString()
+                )
+
+            );
+        }
+        return new JsonModel(
+            array("error" => "no JSON can be parsed",
+                "received content" => $this->getRequest()->toString())
+        );
+    }
+
+    public function storiesAction()
+    {
+
+        $em = $this->getEntityManager();
+        return new ViewModel(array(
+            'data' => $em->getRepository('GeoStory\Entity\Story')->getAllStories(),
+            'test' => "test",
+        ));
+
+    }
+
+
+    public function jsonAction()
+    {
+        /* @var $user Entity\User */
+
+
+        /**
+         * Accepted actions:
+         *
+         * -----StoryActions-----
+         * postStory (create new)
+         * deleteStory (delete)
+         * putStory (edit)
+         *
+         * -----alertActions----
+         * getNearbyStories
+         *
+         *
+         */
+        $em = $this->getEntityManager();
+
+        if ( $this->getServiceLocator()->get('zfcuser_auth_service')->hasIdentity()) {
+            $user = $this->getServiceLocator()->get('zfcuser_auth_service')->getIdentity();
+
+
+        } else {
+            $user =  $em->getRepository('GeoStory\Entity\User')->findOneByEmail("testUser@proj-309-f11.cs.iastate.edu");
+        }
+        $currentUser = array(
+            'id' => $user->getId(),
+            'email' => $user->getEmail(),
+            'dateCreated' => $user->getDateCreated()->format('m-d-y'),
+        );
+
+        $data = $this->params()->fromJson();
+
+
+        $result = new JsonModel(array(
+            'success' => true,
+            'user' => $currentUser,
+        ));
+        $errors = $this->JsonGeoStoryPlugin()->checkInputs($data,$user);
+        $em = $this->getEntityManager();
+        if (empty($errors)) {
+            switch($data['action']){
+                case ActionType::NEW_STORY:
+
+                    //todo: errorcheck the base64 encode
+                    //todo: check for existing md5 hash
+                    $tmpfname = md5(uniqid(rand(), true)) . ".jpg";
+                    $decoded=base64_decode($data['image']);
+                    file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/img/si/" . $tmpfname, $decoded);
+                    $newStory = new Entity\Story($user, $data['title'], $data['storyText'], $tmpfname);
+
+                    $newGpsLocation = new Entity\GpsLocation(floatval($data['latitude']),floatval($data['longitude']),$newStory);
+                    $newStory->setGpsLocation($newGpsLocation);
+
+
+
+                    $em->persist($newGpsLocation);
+                    $em->persist($newStory);
+                    $em->flush();
+
+                    $result->setVariable('image',$_SERVER['SERVER_NAME'] . "/img/si/" . $tmpfname);
+                    $result->setVariable("newStory", $newStory->toArray());
+
+
+                    break;
+                case ActionType::GET_STORY_BY_ID:
+                    $story = $em->getRepository('GeoStory\Entity\Story')->findOneById(intval($data['id']));
+
+                    $view = $em->getRepository('GeoStory\Entity\View')->findOneBy(array('viewerAccount' => $user,'story'=>$story));
+                    $result->setVariable("myRating",0);
+                    if (!$view) {
+                        $view = new Entity\View($user,$story);
+                    } else if($view->hasRating()) {
+                        $result->setVariable("myRating", $view->getRating());
+                    }
+                    if($story){
+                        $result->setVariable("story",$story->toArray());
+                        $result->setVariable("message","Story '{$story->getTitle()}' Found");
+                        $story->incrementViewCount();
+                        $em->persist($story);
+                        $em->persist($view);
+                        $em->flush();
+                    } else {
+                        $result->setVariable('success', 'false');
+                        $result->setVariable('errors', array("story with id '{$data['id']} does not exist' "));
+                    }
+
+                case ActionType::NEW_COMMENT:
+                    break;
+                case ActionType::EDIT_STORY:
+                    break;
+                case ActionType::DELETE_STORY:
+                    $story = $em->getRepository('GeoStory\Entity\Story')->findOneById(intval($data['id']));
+                    if($story){
+                        //todo:check for permissions
+                        $em->remove($story);
+                        $em->flush();
+                        $result->setVariable("message","Story '{$story->getTitle()}' Deleted");
+                    } else {
+                        $result->setVariable('success', 'false');
+                        $result->setVariable('errors', array("story with id '{$data['id']}' does not exist "));
+                    }
+                    break;
+
+                case ActionType::GET_STORIES_BY_USERNAME:
+                    $rp = $em->getRepository('GeoStory\Entity\Story');
+                    $foundUser = $em->getRepository('GeoStory\Entity\User')->findOneBy(array('username' => $data['username']));
+                    if($foundUser){
+                        $result->setVariable('message', "userId : " .$foundUser->getId());
+                        $stories = $rp->findBy(array('author' => $foundUser->getId()));
+                        $storiesFormated = array();
+                        foreach($stories as $s){
+                            $storiesFormated[]= $s->toArray();
+                        }
+                        $result->setVariable('stories',$storiesFormated);
+                    } else {
+                        $result->setVariable('success', 'false');
+                        $result->setVariable('errors', array("user '{$data['username']} does not exist' "));
+                    }
+                    break;
+                case ActionType::GET_STORIES_BY_EMAIL:
+                    $rp = $em->getRepository('GeoStory\Entity\Story');
+                    $foundUser = $em->getRepository('GeoStory\Entity\User')->findOneBy(array('email' => $data['email']));
+                    if($foundUser){
+                        $result->setVariable('message', "userId : " . $foundUser->getId());
+                        $stories = $rp->findBy(array('author' => $foundUser->getId()));
+                        $storiesFormated = array();
+                        foreach($stories as $s){
+                            $storiesFormated[]= $s->toArray();
+                        }
+                        $result->setVariable('stories',$storiesFormated);
+                    } else {
+                        $result->setVariable('success', 'false');
+                        $result->setVariable('errors', array("user with the email '{$data['email']} does not exist' "));
+                    }
+                    break;
+
+
+
+
+                case ActionType::GET_STORIES_BY_DISTANCE:
+                    $rp = $em->getRepository('GeoStory\Entity\Story');
+                    $stories = $rp->getStoriesByDistance($data['latitude'],$data['longitude'],floatval($data['distance']));
+                    $storiesFormated = array();
+                    foreach($stories as $s) {
+                        $storiesFormated[] = array(
+                            'id' => $s[0]['id'],
+                            'user' => 'NA',
+                            'title' => $s[0]['title'],
+                            'storyText' => $s[0]['storyText'],
+                            //'dateCreated' => $s[0]['dateCreated']['date'],
+                            'rating' => $s[0]['cachedRating'],
+                            'imageFile' =>  $s[0]['photoFile'],
+                            'longitude' => $s[0]['gpsLocation']['longitude'],
+                            'latitude' => $s[0]['gpsLocation']['latitude'],
+                        );
+                    }
+
+                    $result->setVariable('stories',$storiesFormated);
+
+                    break;
+
+                case ActionType::GET_SESSION_INFO:
+                    //just return default result.
+
+
+
+
+                    break;
+
+                case ActionType::SET_STORY_RATING:
+                    $story = $em->getRepository('GeoStory\Entity\Story')->findOneById(intval($data['storyId']));
+                    $view = $em->getRepository('GeoStory\Entity\View')->findOneBy(array('viewerAccount' => $user,'story'=>$story));
+                    if (!$view) {
+                        $view = new Entity\View($user,$story);
+
+                    }
+
+                    $view->setRating(intval($data['rating']));
+
+
+
+                    $story->adjustRating();
+                    //todo: update story rating
+;
+
+                    $em->persist($view);
+                    $em->persist($story);
+                    $em->flush();
+                    break;
+                default:
+                    break;
+                    //this should NEVER HAPPEN
+            }
+        } else{
+            $result->setVariable('success', 'false');
+            $result->setVariable('errors', $errors);
+            $result->setVariable('requestDump', $this->getRequest()->toString());
+        }
+
+        return $result;
+
+//
+//        $failure = true;
+//        if (!empty($data)) {
+//            if(strcmp($data['action'],"newStory") == 0) {
+//
+//
+//                if (!is_string($data['title'])){
+//                    $result->setVariable('Error', "Missing Valid 'title' entry");
+//                } else if (!is_string($data['storyText'])) {
+//                    $result->setVariable('Error', "Missing Valid 'storyText' entry");
+//                } else if (is_null($data['longitude']) && is_null($data['latitude'])) {
+//                    $result->setVariable('Error', "Missing Valid 'longitude' or 'latitude' entry");
+//                } else {
+//                    $failure = false;
+//                    $newStory = new Entity\Story(null);
+//                    $newStory->setTitle($data['title']);
+//                    $newStory->setStoryText($data['storyText']);
+//                    $newGpsLocation = new Entity\GpsLocation(floatval($data['latitude']),floatval($data['longitude']),$newStory);
+//                    $newStory->setAuthor($user);
+//                    $newStory->setGpsLocation($newGpsLocation);
+//
+//                    if (is_string($data['image'])){
+//                        $tmpfname = md5(uniqid(rand(), true)) . ".jpg";
+//                        $decoded=base64_decode($data['image']);
+//                        file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/img/si/" . $tmpfname, $decoded);
+//                        $newStory->setPhotoFile($tmpfname);
+//                        $result->setVariable('image',$_SERVER['SERVER_NAME'] . "/img/si/" . $tmpfname);
+//                    }
+//
+//
+//
+//
+//                    $this->getEntityManager()->persist($newGpsLocation);
+//                    $this->getEntityManager()->persist($newStory);
+//                    $this->getEntityManager()->flush();
+//
+//                    $result->setVariable("newStory", true);
+//                }
+
+//
+//
+//
+//            } else if ((strcmp($data['action'],"getStoriesByDistance") == 0)) {
+//                if (is_null($data['longitude']) && is_null($data['latitude'])) {
+//                    $result->setVariable('Error', "Missing Valid 'longitude' or 'latitude' entry");
+//                } else if (!is_string($data['distance'])){
+//                    $result->setVariable('Error', "Missing Valid 'distance'");
+//                } else {
+//                    $failure = false;
+//                    /* @var $rp Entity\Repository\StoryRepository */
+//                    $rp = $this->getEntityManager()->getRepository('GeoStory\Entity\Story');
+//                    $result->setVariable('stories',$rp->getNearbyStories($data['latitude'],$data['longitude'],floatval($data['distance'])));
+//                }
+//
+//            } else {
+//                $result->setVariable('success', 'false');
+//                $result->setVariable('Error', "Unknown Action");
+//            }
+//
+//        } else {
+//            $result->setVariable('Error', "No JSON received; doing nothing");
+//
+//        }
+
+
+
+
+    }
+
+
+
+
+
+    //TODO: we don't want to have an entitiy manager within our controllers.
+    /**
+     * @var DoctrineORMEntityManager
+     */
+    protected $em;
+
+    public function getEntityManager()
+    {
+        if (null === $this->em) {
+            $this->em = $this->getServiceLocator()->get('doctrine.entitymanager.orm_default');
+        }
+        return $this->em;
+    }
+
+
+    public function getUserService()
+    {
+        if (!$this->userService) {
+            $this->userService = $this->getServiceLocator()->get('zfcuser_user_service');
+        }
+        return $this->userService;
+    }
+
+
+
+//
+//    public function addAction()
+//    {
+//    }
+//
+//    public function editAction()
+//    {
+//    }
+//
+//    public function deleteAction()
+//    {
+//    }
+}

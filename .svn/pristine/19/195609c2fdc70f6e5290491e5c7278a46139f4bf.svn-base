@@ -1,0 +1,36 @@
+<?php
+/* @var $this Zend\View\View
+/**
+ * Created by PhpStorm.
+ * User: admin
+ * Date: 10/4/2014
+ * Time: 7:31 PM
+ */
+$this->headTitle("Stories");
+//echo $this->headLink()->appendStylesheet($this->baseUrl('/styles/basic.css'));
+?>
+<table class="table">
+    <tr>
+        <th>Title</th>
+        <th>Story</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Picture</th>
+        <th>Date Created</th>
+        <th>GeoStory ID</th>
+    </tr>
+
+<?php
+foreach($data as $key=>$row)
+{
+    /* @var $row GeoStory\Entity\Story */
+    echo("<tr><td>" . $this->escapeHtml($row->getTitle()) . "</td>"
+        ."<td>" . $this->escapeHtml($row->getStoryText()) . "</td>"
+        ."<td>" . $this->escapeHtml($row->getGpsLocation()->getLatitude()) . "</td>"
+        ."<td>" . $this->escapeHtml($row->getGpsLocation()->getLongitude()) . "</td>"
+        . "<td><a href=\"\\img\\si\\" . $row->getPhotoFile() . "\">image</a></td>"
+        . "<td>" . $this->escapeHtml($row->getDateCreated()->format("m-d-y")) . "</td>"
+        . "<td>" . $row->getId() . "</td></tr>") ;
+}
+?>
+</table>

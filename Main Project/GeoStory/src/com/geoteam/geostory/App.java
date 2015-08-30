@@ -1,0 +1,42 @@
+package com.geoteam.geostory;
+
+import android.app.Activity;
+import android.app.Application;
+import android.content.Context;
+import android.speech.tts.TextToSpeech.OnInitListener;
+
+/**
+ * Global application class that contains the current set context
+ *
+ * Currently this file isn't referenced, but it holds a spot until further needed. 
+ * (statement last verified 12/8/2014
+ *
+ */
+public class App extends Application implements OnInitListener {
+
+    private static Context mContext;
+    private Activity mCurrentActivity = null;
+
+    public static Context getContext() {
+        return mContext;
+    }
+
+    public void setContext(Context mContext) {
+        App.mContext = mContext;
+    }
+
+	@Override
+	public void onInit(int status) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+    public Activity getCurrentActivity(){
+        return mCurrentActivity;
+  }
+  public void setCurrentActivity(Activity mCurrentActivity){
+        this.mCurrentActivity = mCurrentActivity;
+  }
+
+
+}

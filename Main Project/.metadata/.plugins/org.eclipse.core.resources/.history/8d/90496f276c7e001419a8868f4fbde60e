@@ -1,0 +1,18 @@
+import com.geoteam.geostory.HomeScreenActivity;
+
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.DialogInterface.OnClickListener;
+
+
+public class GuestButtonImplementor implements OnClickListener {
+
+	@Override
+	public void onClick(DialogInterface dialog, int which) {
+		Intent intent = new Intent(this, HomeScreenActivity.class);
+		startActivity(intent);
+		this.finish();
+
+	}
+
+}

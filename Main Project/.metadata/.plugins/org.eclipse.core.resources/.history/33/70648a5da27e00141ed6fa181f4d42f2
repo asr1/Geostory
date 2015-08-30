@@ -1,0 +1,228 @@
+package com.geoteam.geostory;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RatingBar;
+import android.widget.RatingBar.OnRatingBarChangeListener;
+import android.widget.TextView;
+import android.widget.Toast;
+
+
+public class ViewStoryActivity extends ActionBarActivity implements ServerCommunicatorListener  {
+
+	
+	private TextView getStoryTitleView;
+	private TextView getStoryTextView;
+	private RatingBar ratingBarStory;
+	private	EditText enterStoryId;
+	private Button getStoryButton;
+	private GeoStory currentStory;
+	private AsyncServerCommuncator communicator = new AsyncServerCommuncator();
+
+	
+	//Activities that tie into intents throughout the app.
+	
+	
+	private void getStory(int id){
+    	//execute.
+    	communicator.executeGetStoryByIdAction(id);
+	}
+	
+	//view story on a map
+	public void gotoMap(View view)
+	{
+		if(currentStory != null)
+		{
+			Intent mapIntent = new Intent();
+			Bundle b = new Bundle();
+			double lat = currentStory.getLatitude();
+			double lng = currentStory.getLongitude();
+			b.putDouble("lat", lat);
+			b.putDouble("lng", lng);
+			mapIntent.putExtras(b);
+		}
+	}
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_view_story);
+		//register to communicator
+		communicator.registerListener(ViewStoryActivity.this);
+		
+		ratingBarStory = (RatingBar) findViewById(R.id.ratingBar1);
+		getStoryTitleView = (TextView) findViewById(R.id.StoryTitle);
+		getStoryTextView = (TextView) findViewById(R.id.storyText);
+		enterStoryId = (EditText) findViewById(R.id.enterStoryId);
+
+//		getStoryButton = (Button) findViewById(R.id.getButton);
+//		getStoryButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//			public void onClick(View v) {
+//           	getStory();
+//            }
+//         });
+		
+		ratingBarStory.setOnRatingBarChangeListener(new OnRatingBarChangeListener() {
+			public void onRatingChanged(RatingBar ratingBar, float rating,
+				boolean fromUser) {
+
+				if(currentStory != null){
+					communicator.executeSetRatingAction((int)(rating  * 2) , currentStory.getId());
+					Log.i("currentStory",currentStory.toString());
+				}
+				
+			}
+		});
+//		
+		try{
+			Bundle params = getIntent().getExtras();
+			int storyId = params.getInt("storyId");
+			
+			if (storyId > 0 ){
+				getStory(storyId);
+				
+			} else {
+			      Toast.makeText(getApplicationContext(), "Error: Activity requires a given ID", 
+			    	      Toast.LENGTH_SHORT).show();
+			      onBackPressed();
+			}
+			
+		} catch (NullPointerException e){
+			//don't auto load a story
+		      Toast.makeText(getApplicationContext(), "Error: Activity requires a given ID", 
+		    	      Toast.LENGTH_SHORT).show();
+		      onBackPressed();
+		}
+	}
+
+		
+		
+		
+	
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.view_story, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+
+
+	@Override
+	public void onServerJSONResponse(final JSONObject serverResponse) {
+		
+
+		if (AsyncServerCommuncator.getActionType(serverResponse).equals("setStoryRating")){
+		      Toast.makeText(getApplicationContext(), "Rating Saved", 
+		    	      Toast.LENGTH_SHORT).show();
+			//rating response, do nothing.
+
+			
+		} else {
+
+		      
+				currentStory = AsyncServerCommuncator.interpretGetStoryByIdAction(serverResponse);
+				runOnUiThread( new Runnable() {
+					@Override
+					public void run() {
+						getStoryTitleView.setText(currentStory.getTitle());
+						getStoryTextView.setText(currentStory.getText());
+						
+						communicator.downloadImage(currentStory.getPhotoUrl());
+						
+						float rating = 0;
+						try {
+							rating = (float) serverResponse.getDouble("myRating") / 2;
+							
+							if (rating> 0){
+								ratingBarStory.setRating(rating);
+							      Toast.makeText(getApplicationContext(), "Rating remembered: " +rating , 
+							    	      Toast.LENGTH_SHORT).show();
+							}
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+
+						
+					}
+				});
+		}
+
+		
+	}
+
+
+
+	@Override
+	public void onServerImageResponse(File serverResponse) {
+		final File imageFile = serverResponse;
+
+		//convert file to byte array
+	    final byte[] fileInBytes = new byte[(int) imageFile.length()];
+	    
+	    InputStream inputStream = null;
+	    try {
+	    
+	        inputStream = new FileInputStream(imageFile);
+	        
+	        inputStream.read(fileInBytes);
+	        inputStream.close();
+	    } catch (IOException e) {
+	    	//error
+			e.printStackTrace();
+			return;
+		} 
+
+	    //Used to send photo to server
+	    //Increase the size (But NOT resolution)
+	    //And display on screen.
+		currentStory.setPhotoByteArray(fileInBytes);
+		runOnUiThread( new Runnable() {
+			@Override
+			public void run() {
+				if(imageFile.exists()){
+					 Bitmap bitmap = BitmapFactory.decodeByteArray(fileInBytes , 0, fileInBytes.length);
+					 ImageView myImage = (ImageView) findViewById(R.id.storyImage);
+					 myImage.setImageBitmap(bitmap);
+					 
+
+				}
+				//set image
+			}
+		});
+		
+	}
+}

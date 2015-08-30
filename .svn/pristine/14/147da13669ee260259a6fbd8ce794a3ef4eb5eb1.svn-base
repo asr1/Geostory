@@ -1,0 +1,169 @@
+package com.geoteam.geostory;
+
+import java.io.File;
+
+import org.json.JSONObject;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
+import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesClient;
+import com.google.android.gms.location.LocationClient;
+
+//The main login page.
+public class MainActivity extends ActionBarActivity implements
+		GooglePlayServicesClient.ConnectionCallbacks,
+		GooglePlayServicesClient.OnConnectionFailedListener,
+		ServerCommunicatorListener
+{
+
+	private EditText username = null;
+	private EditText password = null;
+	private Button login;
+	private AsyncServerCommuncator communicator = new AsyncServerCommuncator();
+	int counter = 3;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		LocationServices.setContext(getApplicationContext());
+		LocationServices.createLocli((new LocationClient(this, this, this)));
+		setContentView(R.layout.activity_main);
+		username = (EditText) findViewById(R.id.usernameField);
+		password = (EditText) findViewById(R.id.passwordField);
+		login = (Button) findViewById(R.id.loginButton);
+		communicator.registerListener(MainActivity.this);
+		communicator.executeGetCurrentUserAction();
+		
+		
+	}
+
+	// Simple login method. Only accepts hardcoded admin/admin
+	// Credentials presently. TODO update to interface with server
+	// And accounts.
+	public void login(View view) {
+		
+    	
+	    if(username.getText().toString().equals("admin") && 
+	      password.getText().toString().equals("admin"))
+	     {
+	      Toast.makeText(getApplicationContext(), "Redirecting...", 
+	      Toast.LENGTH_SHORT).show();
+	      Intent intent = new Intent(this, HomeScreenActivity.class);
+	      startActivity(intent);
+	     }
+    	
+    	//execute.
+    	communicator.executeLogoutAction();
+
+
+	}
+	
+	public void register(View view) {
+		Uri uri = Uri.parse("https://proj-309-f11.cs.iastate.edu/user/register");
+        startActivity(new Intent(Intent.ACTION_VIEW, uri));
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	// This... should honestly be deleted
+	@SuppressWarnings("deprecation")
+	@Override
+	public void onConnectionFailed(ConnectionResult result) {
+		if (result.hasResolution()) {
+			// When is this even being called?
+			// try{
+			// // result.startResolutionForResult(this,
+			// CONNECTION_FAILURE_RESOLUTION_REQUEST );
+			// }
+			// catch(IntentSender.SendIntentException e)
+			// {
+			// e.printStackTrace();
+			// }
+		}
+		// At a mimimum, this shuold be rewritten as if(! result.hasResoltion())
+		else {
+			// This is a wasteland of deprication.
+			// TODO: make custom dialogue.
+			showDialog(result.getErrorCode());
+		}
+	}
+
+	// When location services are established (Create story, etc)
+	// This was for debug, can be removed.
+	// If not remove, make more explicit ("Connected to Location Services",
+	// "Location Found", etc)
+	@Override
+	public void onConnected(Bundle connectionHint) {
+		Toast.makeText(this, "Connected", Toast.LENGTH_SHORT).show();
+		LocationServices.setLocation(LocationServices.getLocCli()
+				.getLastLocation());
+	}
+
+	// If the location is lost (underground, no wifi, etc)
+	@Override
+	public void onDisconnected() {
+		Toast.makeText(this, "Disconnected. Please re-connect.",
+				Toast.LENGTH_SHORT).show();
+	}
+
+
+
+	@Override
+	public void onServerJSONResponse(JSONObject serverResponse) {
+		// TODO Auto-generated method stub
+
+		if(AsyncServerCommuncator.getActionType(serverResponse).equals("loginAction")){
+			
+			boolean loginSuccess = AsyncServerCommuncator.interpretLoginAction(serverResponse);
+			if(loginSuccess){
+				Toast.makeText(getApplicationContext(), "Login Successful",
+						Toast.LENGTH_SHORT).show();
+				Intent intent = new Intent(this, HomeScreenActivity.class);
+				startActivity(intent);
+				this.finish();
+				
+			} else {
+				Toast.makeText(getApplicationContext(), "Login Failed",
+						Toast.LENGTH_SHORT).show();
+			}
+		} else if(AsyncServerCommuncator.getActionType(serverResponse).equals("logoutAction")){
+			//logout
+			communicator.executeLoginAction(username.getText().toString(),  password.getText().toString());
+		} else {
+			
+			User currentUser = AsyncServerCommuncator.interpretGetCurrentUserAction(serverResponse);
+			Log.i("current user response","Username:" + currentUser.getName());
+			if (!currentUser.isAnonymous()){
+				Intent intent = new Intent(this, HomeScreenActivity.class);
+				startActivity(intent);
+				this.finish();
+			}
+		}
+
+		
+	}
+
+	@Override
+	public void onServerImageResponse(File serverResponse) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+
+}

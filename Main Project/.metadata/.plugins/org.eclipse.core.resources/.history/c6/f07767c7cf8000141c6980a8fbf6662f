@@ -1,0 +1,37 @@
+package com.geoteam.geostory;
+
+public class ViewSettingsActivity {
+
+    setContentView(R.layout.ActivityViewSettings);
+
+    t=new TextView(this); 
+
+    t=(TextView)findViewById(R.id.TextView01); 
+    t.setText("Step One: blast egg");
+    
+	final TextView t1=new TextView(this); 
+	t1.setText("Hello Android");        
+	    final SeekBar sk=(SeekBar) findViewById(R.id.seekBar1);     
+	    sk.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {       
+
+	    @Override       
+	    public void onStopTrackingTouch(SeekBar seekBar) {      
+	        // TODO Auto-generated method stub      
+	    }       
+
+	    @Override       
+	    public void onStartTrackingTouch(SeekBar seekBar) {     
+	        // TODO Auto-generated method stub      
+	    }       
+
+	    @Override       
+	    public void onProgressChanged(SeekBar seekBar, int progress,boolean fromUser) {     
+	        // TODO Auto-generated method stub      
+
+	        t1.setTextSize(progress);
+	        Toast.makeText(getApplicationContext(), String.valueOf(progress),Toast.LENGTH_LONG).show();
+
+	    }       
+	});   
+	
+}

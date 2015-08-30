@@ -1,0 +1,213 @@
+package com.geoteam.geostory;
+
+import java.io.File;
+import java.util.Date;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.R.integer;
+
+import com.loopj.android.http.Base64;
+
+
+/**
+ * The story which conains text, photo, location
+ * And other information to be shared at a coordinate location.
+ */
+public class GeoStory {
+
+	
+	/* goestory attributes */
+	private int id;
+	private int accountId;
+	private String title;
+	private double latitude;
+	private double longitude;
+	private Date dateCreated;
+	private byte[] photoByteArray;
+	private String photoUrl;
+	private boolean deleted = false;
+	private double cachedRating;
+	private String text;
+	private int numOfViews;
+	private float rating;
+	
+	//without image
+	public GeoStory(String title)
+	{
+		this.photoByteArray = null;
+		this.title = title;
+		this.id = -1;
+		this.text = "";
+	}
+	
+	//From a GeoStory
+	public GeoStory(JSONObject json)
+	{
+		try {
+			id = json.getInt("id");
+		} catch (Exception e) {
+			id = -1;
+		} try {
+			title = json.getString("title");
+		} catch (JSONException e) {
+			title = ("N/A");
+		} try {
+			latitude = json.getDouble("latitude");
+		} catch (JSONException e) {
+			latitude = -1;
+		} try {
+			longitude = json.getDouble("longitude");
+		} catch (JSONException e) {
+			longitude = -1;
+		} try {
+			dateCreated = new Date();
+			json.get("dateCreated"); // TODO: convert format('d-m-y') into java data ... 
+		} catch (JSONException e) {
+			dateCreated = null;
+		} try {
+			text = json.getString("storyText");
+		} catch (JSONException e) {
+			text = "";
+		} try {
+			photoUrl = json.getString("imageFile");
+		} catch (JSONException e) {
+			photoUrl = "";
+		} try{
+			numOfViews = json.getInt("numOfView");
+		}  catch (JSONException e) {
+			numOfViews = 0;
+		} try {
+			rating = (float) (json.getDouble("rating")/ 2.0);
+		} catch (JSONException e) {
+			rating = (float) 2.5;
+		}
+	}
+	
+	//setters
+	//NOTE: The server is always in charge of deciding the ID
+	public void setID(int id)
+	{
+		this.id = id;
+	}
+	public void setAccountID(int accountId)
+	{
+		this.accountId = accountId;
+	}
+	public void setTitle(String title)
+	{
+		this.title = title;
+	}
+
+	public void delete()
+	{
+		this.deleted = true;
+	}
+	public void undelete()
+	{
+		this.deleted = false;
+	}
+	public void setLatitude(double latitude)
+	{
+		this.latitude = latitude;
+	}
+	public void setLongitude(double longitude)
+	{
+		this.longitude = longitude;
+	}
+	
+	//NOTE: The server is always in charge of deciding WHEN the date created is
+	public void setDateCreated(Date dateCreated)
+	{
+		this.dateCreated = dateCreated;
+	}
+	
+	public void setCachedRating(double cachedRating)
+	{
+		this.cachedRating = cachedRating;
+	}
+	public void setText(String text)
+	{
+		this.text = text;
+	}
+	
+	//getters
+	public int getId()
+	{
+		return id;
+	}
+	public int getAccountId()
+	{
+		return accountId;
+	}
+	public String getTitle()
+	{
+		return title;
+	}
+	public boolean isDeleted()
+	{
+		return deleted;
+	}
+	public double getLatitude()
+	{
+		return latitude;
+	}
+	public double getLongitude()
+	{
+		return longitude;
+	}
+	public Date getTimeCreated()
+	{
+		return dateCreated;
+	}
+	public double getCachedRating()
+	{
+		return cachedRating;
+	}
+	public String getText()
+	{
+		return text;
+	}
+
+	
+	public String getPhotoUrl() {
+		return photoUrl;
+	}
+
+	public void setPhotoUrl(String photoUrl) {
+		this.photoUrl = photoUrl;
+	}
+
+
+	
+	public boolean hasPhotoDownloaded(){
+		return (this.photoByteArray != null);
+		
+	}
+	
+	//Convert image to base64 for server sending.
+	public  String getImageBase64()
+	{
+		
+		return Base64.encodeToString(photoByteArray, 0);
+	}
+
+	public byte[] getPhotoByteArray() {
+		return photoByteArray;
+	}
+
+	public void setPhotoByteArray(byte[] photoByteArray) {
+		this.photoByteArray = photoByteArray;
+	}
+
+	//to string for list view
+	@Override
+    	public String toString() {
+			return "" + title + ".\t Views: " + numOfViews + " Rating: " + String.format("%.1f", rating);
+			
+		}
+	
+}
+
+

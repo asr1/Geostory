@@ -1,0 +1,101 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context="com.geoteam.geostory.HomeScreenActivity" >
+	android:background="@color/black"
+    
+	 <AbsoluteLayout
+	     android:id="@+id/linearLayout1"
+	     android:layout_width="match_parent"
+	     android:layout_height="match_parent"
+	     android:layout_alignParentLeft="true"
+	     android:layout_alignParentTop="true"
+	     android:background="@color/green"
+	     android:orientation="vertical" >
+	     
+
+	     <Button
+	         android:id="@+id/button12"
+	         android:layout_width="270dp"
+	         android:layout_height="270dp"
+	         android:layout_x="51dp"
+	         android:layout_y="11dp"
+	         android:background="@drawable/buttonback"
+	         android:textColor="#FFFFFF"
+	         android:gravity="center_vertical|center_horizontal"
+	         android:textSize="20sp" />
+
+	     <Button
+	         android:id="@+id/button10"
+	         android:layout_width="100dp"
+	         android:layout_height="60dp"
+	         android:layout_x="77dp"
+	         android:layout_y="107dp"
+	         android:background="@drawable/screensketchbutton"
+	         android:onClick="NearbyListView"
+	         android:text="Nearby Stories"
+	         android:textColor="#b5bc90"
+	         android:textSize="20sp" />
+
+	     <Button
+	         android:id="@+id/button9"
+	         android:layout_width="100dp"
+	         android:layout_height="60dp"
+	         android:layout_x="77dp"
+	         android:layout_y="29dp"
+	         android:background="@drawable/screensketchbutton"
+	         android:onClick="createPost"
+	         android:text="Create a Post"
+	         android:textColor="#b5bc90"
+	         android:textSize="20sp" />
+
+	     <Button
+	         android:id="@+id/ViewStoryLink"
+	         android:layout_width="100dp"
+	         android:layout_height="60dp"
+	         android:layout_x="195dp"
+	         android:layout_y="32dp"
+	         android:background="@drawable/screensketchbutton"
+	         android:onClick="viewStory"
+	         android:text="View Story"
+	         android:textColor="#b5bc90"
+	         android:textSize="20sp" />
+
+	     <Button
+	         android:id="@+id/button2"
+	         android:layout_width="100dp"
+	         android:layout_height="60dp"
+	         android:layout_x="199dp"
+	         android:layout_y="109dp"
+	         android:background="@drawable/screensketchbutton"
+	         android:text="My Posts"
+	         android:textColor="#b5bc90"
+	         android:textSize="20sp" />
+
+	     <Button
+	         android:id="@+id/button4"
+	         android:layout_width="100dp"
+	         android:layout_height="60dp"
+	         android:layout_x="199dp"
+	         android:layout_y="191dp"
+	         android:background="@drawable/screensketchbutton"
+	         android:onClick="Settings"
+	         android:text="Settings"
+	         android:textColor="#b5bc90"
+	         android:textSize="20sp" />
+
+	     <Button
+	         android:id="@+id/mapLink"
+	         android:layout_width="100dp"
+	         android:layout_height="60dp"
+	         android:layout_x="77dp"
+	         android:layout_y="192dp"
+	         android:background="@drawable/screensketchbutton"
+	         android:onClick="GoogleMapsView"
+	         android:text="Map"
+	         android:textColor="#b5bc90"
+	         android:textSize="20sp" />
+	 </AbsoluteLayout>
+
+</RelativeLayout>

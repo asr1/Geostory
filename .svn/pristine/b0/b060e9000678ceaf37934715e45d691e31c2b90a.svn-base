@@ -1,0 +1,43 @@
+package com.geoteam.geostory;
+
+
+import java.io.File;
+
+import android.app.Activity;
+import android.os.Bundle;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+
+public class ViewStoryOnMap extends Activity
+{
+	@Override
+    public void onCreate(Bundle savedInstanceState) {
+		
+        super.onCreate(savedInstanceState);
+        //setContentView(R.layout.activity_view_story_on_map);
+        Bundle b = getIntent().getExtras();
+        
+        double lat = b.getDouble("lat");
+        double lng = b.getDouble("lng");
+        String title = b.getString("title");
+        
+        GoogleMap map = ((MapFragment) getFragmentManager()
+                .findFragmentById(R.id.map)).getMap();
+    	
+        LatLng tempCoord = new LatLng(lat,lng);
+        map.setMyLocationEnabled(true);
+        map.addMarker(new MarkerOptions()
+        		.title(title)
+        		.position(tempCoord));
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(tempCoord, 13));
+	}
+	
+    
+    
+    
+}

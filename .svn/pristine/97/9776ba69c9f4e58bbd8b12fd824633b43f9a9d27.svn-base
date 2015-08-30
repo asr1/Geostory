@@ -1,0 +1,106 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: admin
+ * Date: 10/20/2014
+ * Time: 8:38 PM
+ */
+
+namespace GeoStory\Controller\Plugin;
+
+
+use Zend\Mvc\Controller\Plugin\AbstractPlugin;
+use Zend\View\Model\JsonModel;
+use Zend\View\Model\ViewModel;
+use GeoStory\Entity;
+use GeoStory\Model\ActionType;
+
+
+
+class JsonGeoStoryPlugin extends AbstractPlugin {
+
+
+    public function checkInputs($json,$user){
+
+        $error = array();
+        switch($json['action']){
+            case ActionType::NEW_STORY:
+                $this->checkForUser($json,$user,$error);
+                $this->checkForStory($json,$user,$error);
+            case ActionType::EDIT_STORY:
+            case ActionType::NEW_COMMENT:
+
+            case ActionType::DELETE_STORY:
+            case ActionType::GET_STORY_BY_ID:
+            case ActionType::GET_STORIES_BY_USERNAME:
+            case ActionType::GET_STORIES_BY_EMAIL:
+            case ActionType::GET_SESSION_INFO:
+                break;
+            case ActionType::SET_STORY_RATING:
+                $this->checkForUser($json,$user,$error);
+                break;
+            case ActionType::GET_STORIES_BY_DISTANCE:
+                $this->checkGeoLocation($json,$user,$error);
+                break;
+
+
+
+            default:
+                if (is_null($json)){
+                    $error[]= "JSON could not be parsed! Invalid request.'";
+                }
+                $error[]= "Unkown Action '{$json['action']}'";
+        }
+        return $error;
+    }
+
+    private function checkForUser($json,$user,&$error  = null)
+    {
+
+        if ($user->isAnonymous()){
+            $error[]= "A user is not logged in";
+        }
+
+        //todo: check user permissions
+
+    }
+
+    private function checkForStory($json,$user,&$error  = null){
+        $this->checkTitle($json,$user,$error);
+        $this->checkStoryText($json,$user,$error);
+        $this->checkGeoLocation($json,$user,$error);
+       // $this->checkImage($json,$user,$error);
+    }
+
+    private function checkTitle($json,$user,&$error  = null){
+        if (!is_string($json['title'])){
+            $error[]= "Missing Valid 'title' entry";
+        }
+    }
+
+    private function checkImage($json,$user,&$error  = null){
+        if (!is_string($json['image'])){
+            $error[]= "Missing Valid 'image' entry";
+        }
+    }
+
+    private function checkStoryText($json,$user,&$error  = null){
+        if (!is_string($json['storyText'])){
+            $error[]= "Missing Valid 'storyText' entry";
+        }
+    }
+
+    private function checkGeoLocation($json,$user,&$error  = null){
+        if (floatval($json['longitude']) == 0){
+            $error[]= "Missing Valid 'longitude' entry";
+        }
+        if (floatval($json['latitude']) == 0){
+            $error[]= "Missing Valid 'latitude' entry";
+        }
+    }
+
+
+
+
+}
+

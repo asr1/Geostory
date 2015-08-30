@@ -1,0 +1,449 @@
+package com.geoteam.geostory;
+
+import java.util.ArrayList;
+
+import org.apache.http.Header;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.content.Context;
+import android.util.Log;
+
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.Base64;
+import com.loopj.android.http.FileAsyncHttpResponseHandler;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+import java.io.File;
+
+
+/**
+ * 
+ * steps to use:
+ * 1. In main Activity -> register listener()
+ * 		//register the callback function of the activity
+ * 
+ * 2. In main Activity -> execute[name]Action()
+ * 		//Call the Server action
+
+ * 3. In Activities listener function -> interpret[name]Action() 
+ * 		//convert the response to expected output
+ * 
+ * 
+ * 
+ * NOTE:
+ * to add a new server function, all we need to do is implement 
+ * a execute[Name]Action() and a interpret[Name]Action() function!
+ * 
+ * @author forrest
+ *
+ */
+public class AsyncServerCommuncator {
+	
+	  
+	  private static final String JSON_URL= "http://192.168.0.3/geostory/json";
+	  private static final String IMAGE_URL = "http://192.168.0.3/img/si/";
+	  private static final String TEST_URL = "http://192.168.0.3/geostory/echo";
+	  private static final String LOGIN_URL = "http://192.168.0.3/user/login";
+	  private static final String LOGOUT_URL = "http://192.168.0.3/user/logout";
+	/*
+	  private static final String JSON_URL= "http://proj-309-f11.cs.iastate.edu/geostory/json";
+	  private static final String IMAGE_URL = "http://proj-309-f11.cs.iastate.edu/img/si/";
+	  private static final String TEST_URL = "http://proj-309-f11.cs.iastate.edu/geostory/echo";
+	  private static final String LOGIN_URL = "http://proj-309-f11.cs.iastate.edu/user/login";
+	  private static final String LOGOUT_URL = "http://proj-309-f11.cs.iastate.edu/user/logout";
+	*/
+	  private static AsyncHttpClient client = new AsyncHttpClient();
+	
+	  //listener activity that we return a story to.
+	  ServerCommunicatorListener listener;
+	  //JSONObject serverResponse;
+	  
+	  
+	  
+	  /**
+	 * @param listener
+	 * This method is used for passing the custom listener object 
+	 * Throughout the application. This is used for location.
+	 */
+	public void registerListener(ServerCommunicatorListener listener){
+	    	this.listener = listener;
+	  }
+	  
+	  
+	  
+	/* START EXECUTE ACTION FUNCTIONS */
+	  public void downloadImage(String image){
+		  getImage(image);
+		  
+	  }
+	
+	  
+	public void executeLoginAction(String account, String password) {
+		client.setEnableRedirects(true, true, true);	
+		RequestParams postParams = new RequestParams();
+		postParams.put("identity", account);
+		postParams.put("credential", password);
+		client.post(LOGIN_URL, postParams, new AsyncHttpResponseHandler() {
+
+			@Override
+			public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error)
+			{
+				try {
+					
+					
+					Log.i("error", error.getMessage());
+					Log.i("login fail responseBody", "" + new String(responseBody));
+				} catch (Exception e) {
+
+				}
+				Log.e("login failed",
+						"Async login onFailure function 1 was called. status" + statusCode);
+				
+				JSONObject response = new JSONObject();
+				
+				try {
+					response.put("success", "false");
+					response.put("action", "loginAction");
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				listener.onServerJSONResponse(response);
+				// TODO Auto-generated method stub
+
+			}
+
+		     @Override
+		     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+
+					// TODO Auto-generated method stub
+					JSONObject response = new JSONObject();
+					String responseString = new String(responseBody);
+					Log.i("response",responseString);
+					if(responseString.contains("Hello,")){
+						try {
+							response.put("success", "true");
+							response.put("action", "loginAction");
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					} else {
+						try {
+							response.put("success", "false");
+							response.put("action", "loginAction");
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					listener.onServerJSONResponse(response);
+			}
+		     
+
+		});
+	}
+	
+	public void executeGetCurrentUserAction(){
+		RequestParams postParams = new RequestParams();
+		postParams.put("action", "getSessionInfo");
+		postParams.setUseJsonStreamer(true);
+		post(postParams);
+	}
+	
+	public void executeSetRatingAction(int rating, int storyID){
+		RequestParams postParams = new RequestParams();
+		postParams.put("action","");
+		postParams.put("rating","" + rating);
+		postParams.put("storyId","" + storyID);
+		postParams.setUseJsonStreamer(true);
+		post(postParams);
+	}
+	
+	
+	public void executeLogoutAction() {
+		client.setEnableRedirects(true, true, true);
+		client.post(LOGOUT_URL, new AsyncHttpResponseHandler() {
+			@Override
+			public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error)
+			{
+				Log.e("logout failed",
+						"Async login onFailure function 1 was called. status" + statusCode);
+				JSONObject response = new JSONObject();
+				try {
+					response.put("success", "false");
+					response.put("action", "logoutAction");
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				listener.onServerJSONResponse(response);
+				
+			}
+			
+			 @Override
+		     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+				 
+					JSONObject response = new JSONObject();
+					try {
+						response.put("success", "true");
+						response.put("action", "logoutAction");
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					listener.onServerJSONResponse(response);
+				 
+			 }
+		
+		});
+		
+	}
+	/**
+	 * 
+	 * @param newStory
+	 *            This method takes in a story and sends a request to the Server
+	 *            to make and register a new Story object with the given story
+	 *            as a default, along with the current location.
+	 */
+	  public void executeCreateStoryAction(GeoStory newStory){
+		 
+			RequestParams postParams = new RequestParams();
+			postParams.put("action", "newStory");
+			postParams.put("title",newStory.getTitle());
+			postParams.put("storyText", newStory.getText());
+			postParams.put("latitude", "" + newStory.getLatitude());
+			postParams.put("longitude", "" + newStory.getLongitude());
+			if (newStory.hasPhotoDownloaded())
+			{
+				postParams.put("image", newStory.getImageBase64());
+			}
+			
+			postParams.setUseJsonStreamer(true);
+			post(postParams);
+
+			
+	  }
+	  
+	  
+	  /**
+	   * This method asks the server for an arrraylist of stories
+	   * That are within the specified distance (100m default) 
+	   * Of the user. These stories are added to the screen.
+	   */
+	  public void executeGetStoriesByDistanceyAction(){
+		  //TODO
+			RequestParams postParams = new RequestParams();
+			postParams.put("action", "getStoriesByDistance");
+			postParams.put("latitude", LocationServices.getLocation(false));
+			postParams.put("longitude", LocationServices.getLocation(true));
+			postParams.put("distance", "100");
+			
+			postParams.setUseJsonStreamer(true);
+
+			post(postParams);
+
+	  }
+	 
+	  /**
+	   * Given an ID, this method displays on screen the 
+	   * Story on the server with the corresponding ID.
+	   * @param id
+	   */
+	  public void executeGetStoryByIdAction(int id){
+		  RequestParams postParams = new RequestParams();
+		  postParams.put("action", "getStoryById");
+		  postParams.put("id", "" + id);
+		  postParams.setUseJsonStreamer(true);
+		  post(postParams);
+	  }
+	  
+	  
+	  
+	  public static String getActionType(JSONObject response){
+		  
+		  try {
+			  return response.getString("action");
+		  } catch (JSONException e) {
+			  return "unknown, action's type not set";
+		}
+		  
+	  }
+	  
+	  /* START INTERPRET  ACTION FUNCTIONS */
+	 // The interpreter functions take data from the server
+	 // And turn it into meaningful results (screen display, etc)
+	  
+	  public static GeoStory interpretCreateStoryAction(JSONObject response){
+		 
+		
+		 //TODO: check for any errors?
+		try {
+			return new GeoStory(response.getJSONObject("newStory"));
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		 
+		 
+	  }
+	  
+	  
+	  
+	  public static boolean interpretLoginAction(JSONObject response){
+		  try {
+			return (response.get("success").equals("true"));
+		} catch (JSONException e) {
+			
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	  }
+	  
+	  
+	  public static User interpretGetCurrentUserAction(JSONObject response){
+
+		try {
+			return new User(response.getJSONObject("user"));
+		} catch (JSONException e) {
+			return new User();
+		}
+
+	  }
+	  
+	  
+	  //Interpreter for GetStoryByID
+	  public static GeoStory interpretGetStoryByIdAction(JSONObject response){
+		 //note: does not process image
+		//TODO: check for any errors?
+		try {
+			return new GeoStory(response.getJSONObject("story"));
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		 
+		 
+	  }
+	  
+	  //Interpreter for getStoryByDistance
+	  public static ArrayList<GeoStory> interpretGetStoryByDistanceAction(JSONObject response){
+
+		  ArrayList<GeoStory> ret = new ArrayList<GeoStory>();
+		  try {
+			
+			JSONArray stories = response.getJSONArray("stories");
+			for ( int i = 0; i < stories.length(); i++)
+			{
+				ret.add(new GeoStory((JSONObject)stories.get(i)));
+			}
+
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		  return ret;
+	  }
+		 
+		 
+	 
+	  
+	  
+	  /* END INTERPRET ACTION FUNCTIONS */
+	  
+	  //Debug use only
+	  private void testParams(RequestParams params){
+		  client.post(TEST_URL, params, new JsonHttpResponseHandler(){
+				
+	            @Override
+	            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+
+	            	
+	            	//TODO: check for error codes within the JSON object
+	            	Log.i("JSON TEST",response.toString());
+	            }
+
+
+				@Override
+				public void onFailure(int statusCode, Header[] headers,
+						String responseString, Throwable throwable) {
+						
+					Log.e("json failed","Async JSON test failed");
+
+				}
+		  });  
+	  }
+	  
+
+	  private void post(RequestParams params){
+		  client.post(JSON_URL, params, new JsonHttpResponseHandler(){
+				
+	            @Override
+	            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+
+	            	
+	            	//TODO: check for error codes within the JSON object
+	            	listener.onServerJSONResponse(response);
+	            }
+
+
+				@Override
+				public void onFailure(int statusCode, Header[] headers,
+						String responseString, Throwable throwable) {
+					
+					Log.e("json failed","Async JSON onFailure function 1 was called");
+
+				}
+
+				@Override
+				public void onFailure(int statusCode, Header[] headers,
+						Throwable throwable, JSONArray errorResponse) {
+					Log.e("json failed","Async JSON onFailure function 2 was called");
+				}
+
+				@Override
+				public void onFailure(int statusCode, Header[] headers,
+						Throwable throwable, JSONObject errorResponse) {
+					Log.e("json failed","Async JSON onFailure function 3 was called");
+				}
+
+	            //TODO: @Override the other possible functions 
+	            
+	            
+	        });
+		  
+		  
+	  }
+	  
+	  //This method gets an image from the server and passes it to the
+	  //APpropriate places within the app.
+	 private void getImage(String url){
+
+		 client.get(IMAGE_URL + url, new FileAsyncHttpResponseHandler((Context) this.listener) {
+			 
+			 	
+			    @Override
+			    public void onSuccess(int statusCode, Header[] headers, File response) {
+			        listener.onServerImageResponse(response);
+			    }
+
+				@Override
+				public void onFailure(int arg0, Header[] arg1, Throwable arg2,
+						File arg3) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
+		 
+	 }
+	  
+	  
+
+	
+}

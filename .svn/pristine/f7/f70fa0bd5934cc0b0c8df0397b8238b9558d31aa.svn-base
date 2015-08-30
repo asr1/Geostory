@@ -1,0 +1,106 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    tools:context="com.geoteam.geostory.CreatePostActivity" >
+
+    <AbsoluteLayout
+	     android:id="@+id/linearLayout1"
+	     android:layout_width="match_parent"
+	     android:layout_height="match_parent"
+	     android:layout_alignParentLeft="true"
+	     android:layout_alignParentTop="true"
+	     android:background="@color/green"
+	     android:orientation="vertical" >
+	     
+            
+      <Button
+	         android:id="@+id/button12"
+	         android:layout_width="351dp"
+	         android:layout_height="371dp"
+	         android:layout_x="5dp"
+	         android:layout_y="90dp"
+	         android:background="@drawable/buttonback"
+	         android:gravity="center_vertical|center_horizontal"
+	         android:textColor="#FFFFFF"
+	         android:textSize="20sp" />
+        
+    </AbsoluteLayout>    
+    
+    <EditText
+        android:id="@+id/newStoryTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="Title"
+        android:inputType="textMultiLine" />
+
+
+    <ImageView
+        android:id="@+id/cameraPreviews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/newStoryText"
+        android:layout_alignLeft="@+id/newStoryText"
+        android:layout_alignRight="@+id/newStoryText"
+        android:layout_below="@+id/newStoryTitle"
+        android:clickable="true"
+        android:onClick="imageFull"
+        android:layout_marginTop="5dp"/>
+    
+
+    <EditText
+        android:id="@+id/newStoryText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/gotoCamera"
+        android:layout_alignLeft="@+id/newStoryMessage"
+        android:layout_marginBottom="5dp"
+        android:ems="10"
+        android:hint="Story"
+        android:inputType="textMultiLine" />
+
+    <EditText
+        android:id="@+id/newStoryMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/newStoryTitle"
+        android:layout_alignParentBottom="true"
+        android:ems="10" />
+
+    <Button
+        android:id="@+id/gotoCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/newStoryMessage"
+        android:layout_alignParentRight="true"
+        android:onClick="gotoCamera"
+        android:text="Camera" />
+
+    <Button
+        android:id="@+id/gotoGallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/newStoryMessage"
+        android:layout_alignParentLeft="true"
+        android:onClick="gotoGallery"
+        android:text="Gallery" />
+
+    <Button
+        android:id="@+id/newStoryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/newStoryMessage"
+        android:layout_centerHorizontal="true"
+        android:onClick="onClick"
+        android:text="Test Story" />
+    
+            <ImageView
+                android:id="@+id/cameraPreviewsFull"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" />
+
+</RelativeLayout>

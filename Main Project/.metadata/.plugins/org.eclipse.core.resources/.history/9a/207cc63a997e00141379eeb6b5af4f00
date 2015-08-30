@@ -1,0 +1,141 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    tools:context="com.geoteam.geostory.CreatePostActivity" >
+
+    <AbsoluteLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/green"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/button12"
+            android:layout_width="250dp"
+            android:layout_height="38dp"
+            android:layout_marginBottom="22dp"
+            android:layout_x="51dp"
+            android:layout_y="332dp"
+            android:background="@drawable/buttonback"
+            android:gravity="center_vertical|center_horizontal"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/button12"
+            android:layout_width="250dp"
+            android:layout_height="38dp"
+            android:layout_x="63dp"
+            android:layout_y="16dp"
+            android:background="@drawable/buttonback"
+            android:gravity="center_vertical|center_horizontal"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/newStoryTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="69dp"
+            android:layout_y="16dp"
+            android:cursorVisible="true"
+            android:ems="10"
+            android:focusable="true"
+            android:hint="Title"
+            android:inputType="textMultiLine"
+            android:lines="1"
+            android:maxLines="5"
+            android:scrollbars="vertical"
+            tools:ignore="RtlHardcoded" />
+
+        <EditText
+            android:id="@+id/newStoryText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="56dp"
+            android:layout_y="333dp"
+            android:cursorVisible="true"
+            android:ems="10"
+            android:focusable="true"
+            android:hint="Story"
+            android:inputType="textMultiLine"
+            android:lines="1"
+            android:maxLines="5"
+            android:scrollbars="vertical"
+            tools:ignore="RtlHardcoded" >
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/gotoCamera"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="37dp"
+            android:layout_x="255dp"
+            android:layout_y="421dp"
+            android:background="@drawable/screensketchbutton"
+            android:onClick="gotoCamera"
+            android:text="Camera" />
+
+        <Button
+            android:id="@+id/gotoGallery"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="11dp"
+            android:layout_x="142dp"
+            android:layout_y="421dp"
+            android:background="@drawable/screensketchbutton"
+            android:focusableInTouchMode="true"
+            android:onClick="gotoGallery"
+            android:text="Gallery" />
+
+        <Button
+            android:id="@+id/newStoryButton"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentRight="false"
+            android:layout_marginLeft="29dp"
+            android:layout_x="30dp"
+            android:layout_y="423dp"
+            android:background="@drawable/screensketchbutton"
+            android:onClick="onClick"
+            android:text="Test Story" />
+
+        <ImageView
+            android:id="@+id/cameraPreviews"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_x="92dp"
+            android:layout_y="25dp"
+            android:clickable="true"
+            android:onClick="imageFull" />
+
+        <ImageView
+            android:id="@+id/cameraPreviewsFull"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentLeft="false"
+            android:layout_x="0dp"
+            android:layout_y="0dp" />
+
+        <ImageView
+            android:id="@+id/cameraPreviewsFull"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentLeft="false"
+            android:layout_x="1dp"
+            android:layout_y="0dp" />
+
+    </AbsoluteLayout>
+   
+</LinearLayout>

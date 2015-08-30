@@ -1,0 +1,189 @@
+package com.geoteam.geostory;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+import org.json.JSONObject;
+
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.support.v4.app.NotificationCompat;
+import android.support.v7.app.ActionBarActivity;
+
+public class HomeScreenActivity extends ActionBarActivity implements ServerCommunicatorListener {
+
+	int mNotificationId = 1;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_home_screen);
+		callAsynchronousTask();
+	}
+		
+	public void callAsynchronousTask() {
+	    final Handler handler = new Handler();
+	    Timer timer = new Timer();
+	    TimerTask doAsynchronousTask = new TimerTask() {       
+	        @Override
+	        public void run() {
+	            handler.post(new Runnable() {
+	                public void run() {       
+	                    try {
+	                    	AsyncServerCommuncator communicator = new AsyncServerCommuncator();
+	                    	communicator.registerListener(HomeScreenActivity.this);
+	                    	communicator.executeGetStoriesByDistanceyAction();
+	                    } catch (Exception e) {
+	                        // TODO Auto-generated catch block
+	                    }
+	                }
+	            });
+	        }
+	    };
+	    timer.schedule(doAsynchronousTask, 0, 15000);
+	}	
+		
+	
+
+
+	@Override
+	public void onServerJSONResponse(JSONObject serverResponse) {
+		if (AsyncServerCommuncator.getActionType(serverResponse).equals("logoutAction")){
+			Intent intent = new Intent(this, MainActivity.class);
+			startActivity(intent);
+			this.finish();
+		
+		}else{
+			//the ping action
+			final ArrayList<GeoStory> geoStoryList = AsyncServerCommuncator.interpretGetStoryByDistanceAction(serverResponse);
+
+			if (!geoStoryList.isEmpty())
+			{
+				int j = 0;
+				for (int i = 0; i <= geoStoryList.size(); i++)
+					j = i;
+				sendNotification(j);
+			}
+		}
+
+	}
+	
+	public void sendNotification(int num)
+	{
+		String NoteMsg;
+		if (num == 1)
+			NoteMsg = "There is " + num + " stories nearby!";
+		else
+			NoteMsg = "There are " + num + " stories nearby!";
+		// creates the notification builder object
+		NotificationCompat.Builder mBuilder =
+			    new NotificationCompat.Builder(this)
+				.setAutoCancel(true)
+			    .setSmallIcon(R.drawable.ic_launcher)
+			    .setContentTitle(NoteMsg)
+			    .setContentText("click to view");
+	
+		Intent resultIntent = new Intent(this, NearbyListActivity.class);
+		// Because clicking the notification opens a new ("special") activity, there's
+		// no need to create an artificial back stack.
+		PendingIntent resultPendingIntent =
+		    PendingIntent.getActivity(this,
+		    0,
+		    resultIntent,
+		    PendingIntent.FLAG_UPDATE_CURRENT
+		);
+		
+		mBuilder.setContentIntent(resultPendingIntent);
+		
+		
+		// Gets an instance of the NotificationManager service
+		NotificationManager mNotifyMgr = 
+		        (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+		// Builds the notification and issues it.
+		mNotifyMgr.notify(mNotificationId, mBuilder.build());
+		//mNotificationId++;
+	}
+	
+	
+	//These methods call the appropriate intent, and handle
+	//The activities that are needed.
+	//Everything here is connected graphically to a button.
+	
+	public void createPost(View view)
+	{
+		Intent intent = new Intent(this, CreatePostActivity.class);
+		startActivity(intent);
+		LocationServices.getLocCli().connect();
+	}
+	
+	
+	public void viewStory(View view)
+	{
+		Intent intent = new Intent(this, ViewStoryActivity.class);
+		startActivity(intent);	
+	}
+	
+	public void LoginAsGuest(boolean enabled)
+	{
+		Intent intent = new Intent(this, MainActivity.class);
+		startActivity(intent);
+		this.finish();
+	}
+	
+	public void NearbyListView(View view)
+	{
+		Intent intent = new Intent(this, NearbyListActivity.class);
+		startActivity(intent);
+		
+	}
+	
+	public void GoogleMapsView(View view)
+	{
+		Intent intent = new Intent(this, GoogleMapsView.class);
+		startActivity(intent);
+		
+	}
+	
+	public void logout(View view)
+	{
+    	AsyncServerCommuncator communicator = new AsyncServerCommuncator();
+    	communicator.registerListener(HomeScreenActivity.this);
+    	communicator.executeLogoutAction();
+		
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.home_screen, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	@Override
+	public void onServerImageResponse(File serverResponse) {
+		// TODO Auto-generated method stub
+		
+	}
+}

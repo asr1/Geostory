@@ -1,0 +1,123 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+         android:screenOrientation="portrait"
+    tools:context="com.geoteam.geostory.HomeScreenActivity" >
+    
+    
+	 <AbsoluteLayout
+	     android:id="@+id/linearLayout1"
+	     android:layout_width="match_parent"
+	     android:layout_height="match_parent"
+	     android:layout_alignParentLeft="true"
+	     android:layout_alignParentTop="true"
+	     android:background="@color/green"
+	     android:orientation="vertical" >
+
+	     <Button
+	         android:id="@+id/button12"
+	         android:layout_width="353dp"
+	         android:layout_height="371dp"
+	         android:layout_x="5dp"
+	         android:layout_y="90dp"
+	         android:background="@drawable/buttonback"
+	         android:gravity="center_vertical|center_horizontal"
+	         android:textColor="#FFFFFF"
+	         android:textSize="20sp" />
+
+	     <Button
+	         android:id="@+id/mapLink"
+	         android:layout_width="120dp"
+	         android:layout_height="60dp"
+	         android:layout_x="30dp"
+	         android:layout_y="271dp"
+	         android:background="@drawable/screensketchbutton"
+	         android:onClick="GoogleMapsView"
+	         android:text="Map"
+	         android:textColor="#b5bc90"
+	         android:textSize="20sp" />
+
+	     <Button
+	         android:id="@+id/button10"
+	         android:layout_width="120dp"
+	         android:layout_height="60dp"
+	         android:layout_x="30dp"
+	         android:layout_y="191dp"
+	         android:background="@drawable/screensketchbutton"
+	         android:onClick="NearbyListView"
+	         android:text="Nearby Stories"
+	         android:textColor="#b5bc90"
+	         android:textSize="20sp" />
+
+	     <Button
+	         android:id="@+id/button9"
+	         android:layout_width="120dp"
+	         android:layout_height="60dp"
+	         android:layout_x="30dp"
+	         android:layout_y="111dp"
+	         android:background="@drawable/screensketchbutton"
+	         android:onClick="createPost"
+	         android:text="Create a    Post"
+	         android:textColor="#b5bc90"
+	         android:textSize="20sp" />
+
+	     <Button
+	         android:id="@+id/ViewStoryLink"
+	         android:layout_width="120dp"
+	         android:layout_height="60dp"
+	         android:layout_x="203dp"
+	         android:layout_y="111dp"
+	         android:background="@drawable/screensketchbutton"
+	         android:onClick="viewStory"
+	         android:text="View Story"
+	         android:textColor="#b5bc90"
+	         android:textSize="20sp" />
+
+	     <Button
+	         android:id="@+id/button2"
+	         android:layout_width="120dp"
+	         android:layout_height="60dp"
+	         android:layout_x="203dp"
+	         android:layout_y="191dp"
+	         android:background="@drawable/screensketchbutton"
+	         android:text="My Posts"
+	         android:textColor="#b5bc90"
+	         android:textSize="20sp" />
+
+	     <Button
+	         android:id="@+id/button4"
+	         android:layout_width="120dp"
+	         android:layout_height="60dp"
+	         android:layout_x="30dp"
+	         android:layout_y="271dp"
+	         android:background="@drawable/screensketchbutton"
+	         android:onClick="Settings"
+	         android:text="Settings"
+	         android:textColor="#b5bc90"
+	         android:textSize="20sp" />
+	     
+	       <Button
+	         android:id="@+id/buttonLogOut"
+	         android:layout_width="120dp"
+	         android:layout_height="60dp"
+	         android:layout_x="203dp"
+	         android:layout_y="352dp"
+	         android:onClick="executeLogoutAction"
+	         android:background="@drawable/screensketchbutton"
+	         android:text="Log Out"
+	         android:textColor="#b5bc90"
+	         android:textSize="20sp" />
+	     
+
+	     <ImageView
+	         android:id="@+id/imageView1"
+	         android:layout_width="399dp"
+	         android:layout_height="wrap_content"
+	         android:layout_x="-20dp"
+	         android:layout_y="-22dp"
+	         android:src="@drawable/titlebar" />
+
+	 </AbsoluteLayout>
+
+</RelativeLayout>

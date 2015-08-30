@@ -1,0 +1,68 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.geoteam.geostory.ViewStoryActivity" >
+
+    <TextView
+        android:id="@+id/StoryTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="top|center"
+        android:text="Title" />
+
+    <ImageView
+        android:id="@+id/storyImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/storyText"
+        android:layout_alignRight="@+id/ratingBar1"
+        android:layout_below="@+id/StoryTitle" />
+
+    <TextView
+        android:id="@+id/storyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ratingBar1"
+        android:layout_centerHorizontal="true"
+        android:gravity="top|center"
+        android:text="StoryText" />
+
+    <RatingBar
+        android:id="@+id/ratingBar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:onClick="onRatingClick"
+        android:scaleX="0.3"
+        android:scaleY="0.3" />
+
+    <TextView
+        android:id="@+id/Rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/ratingBar1"
+        android:layout_marginTop="16dp"
+        android:layout_toLeftOf="@+id/StoryTitle"
+        android:text="Rating: " />
+
+    <Button
+        android:id="@+id/gotoMap"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_above="@+id/storyImage"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/screensketchbutton"
+        android:onClick="gotoMap"
+        android:text="Map"
+        android:textColor="#404040"
+        android:textSize="20sp" />
+
+</RelativeLayout>

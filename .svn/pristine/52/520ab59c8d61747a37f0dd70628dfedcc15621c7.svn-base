@@ -1,0 +1,1068 @@
+!SESSION 2014-12-07 23:32:02.502 -----------------------------------------------
+eclipse.buildId=M20130204-1200
+java.version=1.8.0_25
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product com.android.ide.eclipse.adt.package.adtproduct
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.adtproduct
+
+This is a continuation of log file C:\Users\Alex\Desktop\309\Main Project\.metadata\.bak_0.log
+Created Time: 2014-12-08 00:32:43.623
+
+!ENTRY org.eclipse.core.resources 4 2 2014-12-08 00:32:43.625
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:816)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:769)
+	at com.android.ide.eclipse.adt.internal.build.builders.PostCompilerBuilder.clean(PostCompilerBuilder.java:158)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:422)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog.doClean(CleanDialog.java:313)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog$1.runInWorkspace(CleanDialog.java:151)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Contains: Could not delete 'C:\Program Files (x86)\Eclipse ADT\adt-bundle-windows-x86_64-20140702\sdk\extras\google\google_play_services\libproject\google-play-services_lib\bin\google-play-services_lib.jar'.
+org.eclipse.core.runtime.CoreException: Problems encountered while deleting files.
+	at org.eclipse.core.internal.filesystem.local.LocalFile.delete(LocalFile.java:131)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFile(ResourceTree.java:304)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFile(ResourceTree.java:785)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1973)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:803)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:769)
+	at com.android.ide.eclipse.adt.internal.build.builders.PostCompilerBuilder.clean(PostCompilerBuilder.java:158)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:422)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog.doClean(CleanDialog.java:313)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog$1.runInWorkspace(CleanDialog.java:151)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Contains: Could not delete: C:\Program Files (x86)\Eclipse ADT\adt-bundle-windows-x86_64-20140702\sdk\extras\google\google_play_services\libproject\google-play-services_lib\bin\google-play-services_lib.jar.
+!SUBENTRY 1 org.eclipse.core.resources 4 273 2014-12-08 00:32:43.625
+!MESSAGE Problems encountered while deleting resources.
+!SUBENTRY 2 org.eclipse.core.resources 4 273 2014-12-08 00:32:43.625
+!MESSAGE Could not delete 'C:\Program Files (x86)\Eclipse ADT\adt-bundle-windows-x86_64-20140702\sdk\extras\google\google_play_services\libproject\google-play-services_lib\bin\google-play-services_lib.jar'.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Problems encountered while deleting files.
+	at org.eclipse.core.internal.filesystem.local.LocalFile.delete(LocalFile.java:131)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFile(ResourceTree.java:304)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFile(ResourceTree.java:785)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1973)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:803)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:769)
+	at com.android.ide.eclipse.adt.internal.build.builders.PostCompilerBuilder.clean(PostCompilerBuilder.java:158)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:422)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog.doClean(CleanDialog.java:313)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog$1.runInWorkspace(CleanDialog.java:151)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Contains: Could not delete: C:\Program Files (x86)\Eclipse ADT\adt-bundle-windows-x86_64-20140702\sdk\extras\google\google_play_services\libproject\google-play-services_lib\bin\google-play-services_lib.jar.
+!SUBENTRY 3 org.eclipse.core.filesystem 4 273 2014-12-08 00:32:43.625
+!MESSAGE Problems encountered while deleting files.
+!SUBENTRY 4 org.eclipse.core.filesystem 4 273 2014-12-08 00:32:43.625
+!MESSAGE Could not delete: C:\Program Files (x86)\Eclipse ADT\adt-bundle-windows-x86_64-20140702\sdk\extras\google\google_play_services\libproject\google-play-services_lib\bin\google-play-services_lib.jar.
+!SUBENTRY 1 org.eclipse.core.resources 4 273 2014-12-08 00:32:43.625
+!MESSAGE Could not delete 'C:\Program Files (x86)\Eclipse ADT\adt-bundle-windows-x86_64-20140702\sdk\extras\google\google_play_services\libproject\google-play-services_lib\bin\google-play-services_lib.jar'.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Problems encountered while deleting files.
+	at org.eclipse.core.internal.filesystem.local.LocalFile.delete(LocalFile.java:131)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFile(ResourceTree.java:304)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFile(ResourceTree.java:785)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1973)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:803)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:769)
+	at com.android.ide.eclipse.adt.internal.build.builders.PostCompilerBuilder.clean(PostCompilerBuilder.java:158)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:422)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog.doClean(CleanDialog.java:313)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog$1.runInWorkspace(CleanDialog.java:151)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Contains: Could not delete: C:\Program Files (x86)\Eclipse ADT\adt-bundle-windows-x86_64-20140702\sdk\extras\google\google_play_services\libproject\google-play-services_lib\bin\google-play-services_lib.jar.
+!SUBENTRY 2 org.eclipse.core.filesystem 4 273 2014-12-08 00:32:43.625
+!MESSAGE Problems encountered while deleting files.
+!SUBENTRY 3 org.eclipse.core.filesystem 4 273 2014-12-08 00:32:43.626
+!MESSAGE Could not delete: C:\Program Files (x86)\Eclipse ADT\adt-bundle-windows-x86_64-20140702\sdk\extras\google\google_play_services\libproject\google-play-services_lib\bin\google-play-services_lib.jar.
+
+!ENTRY org.eclipse.core.resources 4 75 2014-12-08 00:32:43.636
+!MESSAGE Errors occurred during the build.
+!SUBENTRY 1 com.android.ide.eclipse.adt 4 75 2014-12-08 00:32:43.636
+!MESSAGE Errors running builder 'Android Package Builder' on project 'appcompat_v7'.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:816)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:769)
+	at com.android.ide.eclipse.adt.internal.build.builders.PostCompilerBuilder.clean(PostCompilerBuilder.java:158)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:422)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog.doClean(CleanDialog.java:313)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog$1.runInWorkspace(CleanDialog.java:151)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Contains: Could not delete 'C:\Users\Alex\Desktop\309\Main Project\appcompat_v7\bin\appcompat_v7.jar'.
+org.eclipse.core.runtime.CoreException: Problems encountered while deleting files.
+	at org.eclipse.core.internal.filesystem.local.LocalFile.delete(LocalFile.java:131)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFile(ResourceTree.java:304)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFile(ResourceTree.java:785)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1973)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:803)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:769)
+	at com.android.ide.eclipse.adt.internal.build.builders.PostCompilerBuilder.clean(PostCompilerBuilder.java:158)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:422)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog.doClean(CleanDialog.java:313)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog$1.runInWorkspace(CleanDialog.java:151)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Contains: Could not delete: C:\Users\Alex\Desktop\309\Main Project\appcompat_v7\bin\appcompat_v7.jar.
+!SUBENTRY 2 org.eclipse.core.resources 4 273 2014-12-08 00:32:43.636
+!MESSAGE Problems encountered while deleting resources.
+!SUBENTRY 3 org.eclipse.core.resources 4 273 2014-12-08 00:32:43.637
+!MESSAGE Could not delete 'C:\Users\Alex\Desktop\309\Main Project\appcompat_v7\bin\appcompat_v7.jar'.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Problems encountered while deleting files.
+	at org.eclipse.core.internal.filesystem.local.LocalFile.delete(LocalFile.java:131)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFile(ResourceTree.java:304)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFile(ResourceTree.java:785)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1973)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:803)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:769)
+	at com.android.ide.eclipse.adt.internal.build.builders.PostCompilerBuilder.clean(PostCompilerBuilder.java:158)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:422)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog.doClean(CleanDialog.java:313)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog$1.runInWorkspace(CleanDialog.java:151)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Contains: Could not delete: C:\Users\Alex\Desktop\309\Main Project\appcompat_v7\bin\appcompat_v7.jar.
+!SUBENTRY 4 org.eclipse.core.filesystem 4 273 2014-12-08 00:32:43.637
+!MESSAGE Problems encountered while deleting files.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2014-12-08 00:32:43.637
+!MESSAGE Could not delete: C:\Users\Alex\Desktop\309\Main Project\appcompat_v7\bin\appcompat_v7.jar.
+!SUBENTRY 1 org.eclipse.core.resources 4 273 2014-12-08 00:32:43.637
+!MESSAGE Problems encountered while deleting resources.
+!SUBENTRY 2 org.eclipse.core.resources 4 273 2014-12-08 00:32:43.637
+!MESSAGE Could not delete 'C:\Users\Alex\Desktop\309\Main Project\appcompat_v7\bin\appcompat_v7.jar'.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Problems encountered while deleting files.
+	at org.eclipse.core.internal.filesystem.local.LocalFile.delete(LocalFile.java:131)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFile(ResourceTree.java:304)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFile(ResourceTree.java:785)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1973)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:803)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:769)
+	at com.android.ide.eclipse.adt.internal.build.builders.PostCompilerBuilder.clean(PostCompilerBuilder.java:158)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:422)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog.doClean(CleanDialog.java:313)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog$1.runInWorkspace(CleanDialog.java:151)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Contains: Could not delete: C:\Users\Alex\Desktop\309\Main Project\appcompat_v7\bin\appcompat_v7.jar.
+!SUBENTRY 3 org.eclipse.core.filesystem 4 273 2014-12-08 00:32:43.637
+!MESSAGE Problems encountered while deleting files.
+!SUBENTRY 4 org.eclipse.core.filesystem 4 273 2014-12-08 00:32:43.637
+!MESSAGE Could not delete: C:\Users\Alex\Desktop\309\Main Project\appcompat_v7\bin\appcompat_v7.jar.
+!SUBENTRY 1 com.android.ide.eclipse.adt 4 75 2014-12-08 00:32:43.637
+!MESSAGE Errors running builder 'Android Package Builder' on project 'google-play-services_lib'.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:816)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:769)
+	at com.android.ide.eclipse.adt.internal.build.builders.PostCompilerBuilder.clean(PostCompilerBuilder.java:158)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:422)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog.doClean(CleanDialog.java:313)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog$1.runInWorkspace(CleanDialog.java:151)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Contains: Could not delete 'C:\Program Files (x86)\Eclipse ADT\adt-bundle-windows-x86_64-20140702\sdk\extras\google\google_play_services\libproject\google-play-services_lib\bin\google-play-services_lib.jar'.
+org.eclipse.core.runtime.CoreException: Problems encountered while deleting files.
+	at org.eclipse.core.internal.filesystem.local.LocalFile.delete(LocalFile.java:131)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFile(ResourceTree.java:304)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFile(ResourceTree.java:785)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1973)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:803)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:769)
+	at com.android.ide.eclipse.adt.internal.build.builders.PostCompilerBuilder.clean(PostCompilerBuilder.java:158)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:422)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog.doClean(CleanDialog.java:313)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog$1.runInWorkspace(CleanDialog.java:151)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Contains: Could not delete: C:\Program Files (x86)\Eclipse ADT\adt-bundle-windows-x86_64-20140702\sdk\extras\google\google_play_services\libproject\google-play-services_lib\bin\google-play-services_lib.jar.
+!SUBENTRY 2 org.eclipse.core.resources 4 273 2014-12-08 00:32:43.637
+!MESSAGE Problems encountered while deleting resources.
+!SUBENTRY 3 org.eclipse.core.resources 4 273 2014-12-08 00:32:43.637
+!MESSAGE Could not delete 'C:\Program Files (x86)\Eclipse ADT\adt-bundle-windows-x86_64-20140702\sdk\extras\google\google_play_services\libproject\google-play-services_lib\bin\google-play-services_lib.jar'.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Problems encountered while deleting files.
+	at org.eclipse.core.internal.filesystem.local.LocalFile.delete(LocalFile.java:131)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFile(ResourceTree.java:304)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFile(ResourceTree.java:785)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1973)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:803)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:769)
+	at com.android.ide.eclipse.adt.internal.build.builders.PostCompilerBuilder.clean(PostCompilerBuilder.java:158)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:422)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog.doClean(CleanDialog.java:313)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog$1.runInWorkspace(CleanDialog.java:151)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Contains: Could not delete: C:\Program Files (x86)\Eclipse ADT\adt-bundle-windows-x86_64-20140702\sdk\extras\google\google_play_services\libproject\google-play-services_lib\bin\google-play-services_lib.jar.
+!SUBENTRY 4 org.eclipse.core.filesystem 4 273 2014-12-08 00:32:43.637
+!MESSAGE Problems encountered while deleting files.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2014-12-08 00:32:43.637
+!MESSAGE Could not delete: C:\Program Files (x86)\Eclipse ADT\adt-bundle-windows-x86_64-20140702\sdk\extras\google\google_play_services\libproject\google-play-services_lib\bin\google-play-services_lib.jar.
+!SUBENTRY 1 org.eclipse.core.resources 4 273 2014-12-08 00:32:43.637
+!MESSAGE Problems encountered while deleting resources.
+!SUBENTRY 2 org.eclipse.core.resources 4 273 2014-12-08 00:32:43.637
+!MESSAGE Could not delete 'C:\Program Files (x86)\Eclipse ADT\adt-bundle-windows-x86_64-20140702\sdk\extras\google\google_play_services\libproject\google-play-services_lib\bin\google-play-services_lib.jar'.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Problems encountered while deleting files.
+	at org.eclipse.core.internal.filesystem.local.LocalFile.delete(LocalFile.java:131)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFile(ResourceTree.java:304)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFile(ResourceTree.java:785)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1973)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:803)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:769)
+	at com.android.ide.eclipse.adt.internal.build.builders.PostCompilerBuilder.clean(PostCompilerBuilder.java:158)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:422)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog.doClean(CleanDialog.java:313)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog$1.runInWorkspace(CleanDialog.java:151)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Contains: Could not delete: C:\Program Files (x86)\Eclipse ADT\adt-bundle-windows-x86_64-20140702\sdk\extras\google\google_play_services\libproject\google-play-services_lib\bin\google-play-services_lib.jar.
+!SUBENTRY 3 org.eclipse.core.filesystem 4 273 2014-12-08 00:32:43.637
+!MESSAGE Problems encountered while deleting files.
+!SUBENTRY 4 org.eclipse.core.filesystem 4 273 2014-12-08 00:32:43.637
+!MESSAGE Could not delete: C:\Program Files (x86)\Eclipse ADT\adt-bundle-windows-x86_64-20140702\sdk\extras\google\google_play_services\libproject\google-play-services_lib\bin\google-play-services_lib.jar.
+!SESSION 2014-12-08 00:33:19.034 -----------------------------------------------
+eclipse.buildId=M20130204-1200
+java.version=1.8.0_25
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product com.android.ide.eclipse.adt.package.adtproduct
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.adtproduct
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-12-08 00:33:31.181
+!MESSAGE Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
+Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
+The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
+this system level configuration. The Git installation location can be configured on the
+Team > Git > Configuration preference page's 'System Settings' tab.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-12-08 00:33:31.199
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Alex'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:34:00.987
+!MESSAGE activity_view_story.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:34:03.604
+!MESSAGE activity_view_story.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:34:04.544
+!MESSAGE activity_view_story.xml: Path.isConvex is not supported.
+
+!ENTRY org.eclipse.ui 2 2 2014-12-08 00:34:08.585
+!MESSAGE Invalid property category path: ValidationPropertiesPage (bundle: org.eclipse.wst.xml.ui, propertyPage: org.eclipse.wst.xml.ui.propertyPage.project.validation)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:37:07.038
+!MESSAGE Unable to read C:\Users\Alex\Desktop\309\Main Project\GeoStory\AndroidManifest.xml: org.eclipse.core.internal.resources.ResourceException: Resource is out of sync with the file system: '/GeoStory/AndroidManifest.xml'.
+!STACK 0
+com.android.io.StreamException: org.eclipse.core.internal.resources.ResourceException: Resource is out of sync with the file system: '/GeoStory/AndroidManifest.xml'.
+	at com.android.ide.eclipse.adt.io.IFileWrapper.getContents(IFileWrapper.java:55)
+	at com.android.ide.common.xml.AndroidManifestParser.parse(AndroidManifestParser.java:610)
+	at com.android.ide.eclipse.adt.internal.project.AndroidManifestHelper.parseUnchecked(AndroidManifestHelper.java:75)
+	at com.android.ide.eclipse.adt.internal.project.AndroidManifestHelper.parse(AndroidManifestHelper.java:102)
+	at com.android.ide.eclipse.adt.internal.project.AndroidManifestHelper.parseForData(AndroidManifestHelper.java:177)
+	at com.android.ide.eclipse.adt.internal.project.ProjectHelper.findAndroidProjectByAppName(ProjectHelper.java:606)
+	at com.android.ide.eclipse.adt.DebuggerConnector$WorkspaceAppCache.isWorkspaceApp(DebuggerConnector.java:96)
+	at com.android.ide.eclipse.adt.DebuggerConnector.isWorkspaceApp(DebuggerConnector.java:60)
+	at com.android.ide.eclipse.ddms.LogCatMonitor.isImportantMessage(LogCatMonitor.java:179)
+	at com.android.ide.eclipse.ddms.LogCatMonitor.checkMessages(LogCatMonitor.java:157)
+	at com.android.ide.eclipse.ddms.LogCatMonitor.access$4(LogCatMonitor.java:148)
+	at com.android.ide.eclipse.ddms.LogCatMonitor$3.bufferChanged(LogCatMonitor.java:140)
+	at com.android.ddmuilib.logcat.LogCatReceiver.sendLogChangedEvent(LogCatReceiver.java:140)
+	at com.android.ddmuilib.logcat.LogCatReceiver.log(LogCatReceiver.java:107)
+	at com.android.ddmlib.logcat.LogCatReceiverTask.notifyListeners(LogCatReceiverTask.java:129)
+	at com.android.ddmlib.logcat.LogCatReceiverTask.access$300(LogCatReceiverTask.java:36)
+	at com.android.ddmlib.logcat.LogCatReceiverTask$LogCatOutputReceiver.processLogLines(LogCatReceiverTask.java:114)
+	at com.android.ddmlib.logcat.LogCatReceiverTask$LogCatOutputReceiver.processNewLines(LogCatReceiverTask.java:107)
+	at com.android.ddmlib.MultiLineReceiver.addOutput(MultiLineReceiver.java:94)
+	at com.android.ddmlib.AdbHelper.executeRemoteCommand(AdbHelper.java:441)
+	at com.android.ddmlib.AdbHelper.executeRemoteCommand(AdbHelper.java:347)
+	at com.android.ddmlib.Device.executeShellCommand(Device.java:618)
+	at com.android.ddmlib.logcat.LogCatReceiverTask.run(LogCatReceiverTask.java:75)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: org.eclipse.core.internal.resources.ResourceException: Resource is out of sync with the file system: '/GeoStory/AndroidManifest.xml'.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:793)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:289)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:278)
+	at com.android.ide.eclipse.adt.io.IFileWrapper.getContents(IFileWrapper.java:49)
+	... 23 more
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:42:52.339
+!MESSAGE activity_view_story.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:42:53.055
+!MESSAGE activity_view_story.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:43:08.359
+!MESSAGE activity_view_story.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:43:09.350
+!MESSAGE activity_view_story.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:46:03.307
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:46:03.312
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:46:03.316
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:46:07.562
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:46:07.569
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:46:07.575
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:46:11.260
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:46:11.267
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:46:11.273
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:46:13.367
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:46:13.373
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:46:13.377
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:46:13.863
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:46:13.868
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:46:13.872
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:46:14.213
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:46:14.217
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:46:14.220
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:46:20.232
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:46:20.235
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:46:20.240
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:46:20.853
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:46:20.859
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:46:20.864
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:22.791
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:22.795
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:22.797
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:23.685
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:23.688
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:23.692
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:32.091
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:32.095
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:32.098
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:32.965
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:32.968
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:32.972
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:33.295
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:33.298
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:33.302
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:33.649
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:33.653
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:33.656
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:39.754
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:39.757
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:39.761
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:51.194
+!MESSAGE activity_create_post.xml: Failed to convert 230dp into a drawable
+!STACK 0
+java.lang.NumberFormatException: Color value '230dp' must start with #
+	at com.android.layoutlib.bridge.impl.ResourceHelper.getColor(ResourceHelper.java:72)
+	at com.android.layoutlib.bridge.impl.ResourceHelper.getDrawable(ResourceHelper.java:252)
+	at android.content.res.BridgeTypedArray.getDrawable(BridgeTypedArray.java:666)
+	at android.widget.ImageView.<init>(ImageView.java:146)
+	at android.widget.ImageView.<init>(ImageView.java:135)
+	at android.widget.ImageView.<init>(ImageView.java:131)
+	at sun.reflect.GeneratedConstructorAccessor20.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at android.view.LayoutInflater.createView(LayoutInflater.java:607)
+	at android.view.BridgeInflater.onCreateView(BridgeInflater.java:82)
+	at android.view.LayoutInflater.onCreateView(LayoutInflater.java:682)
+	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:741)
+	at android.view.BridgeInflater.createViewFromTag(BridgeInflater.java:128)
+	at android.view.LayoutInflater.rInflate_Original(LayoutInflater.java:806)
+	at android.view.LayoutInflater_Delegate.rInflate(LayoutInflater_Delegate.java:64)
+	at android.view.LayoutInflater.rInflate(LayoutInflater.java:782)
+	at android.view.LayoutInflater.rInflate_Original(LayoutInflater.java:809)
+	at android.view.LayoutInflater_Delegate.rInflate(LayoutInflater_Delegate.java:64)
+	at android.view.LayoutInflater.rInflate(LayoutInflater.java:782)
+	at android.view.LayoutInflater.inflate(LayoutInflater.java:504)
+	at android.view.LayoutInflater.inflate(LayoutInflater.java:385)
+	at com.android.layoutlib.bridge.impl.RenderSessionImpl.inflate(RenderSessionImpl.java:401)
+	at com.android.layoutlib.bridge.Bridge.createSession(Bridge.java:329)
+	at com.android.ide.common.rendering.LayoutLibrary.createSession(LayoutLibrary.java:332)
+	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.RenderService.createRenderSession(RenderService.java:517)
+	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.GraphicalEditorPart.renderWithBridge(GraphicalEditorPart.java:1584)
+	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.GraphicalEditorPart.recomputeLayout(GraphicalEditorPart.java:1309)
+	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.GraphicalEditorPart.onXmlModelChanged(GraphicalEditorPart.java:1267)
+	at com.android.ide.eclipse.adt.internal.editors.layout.LayoutEditorDelegate.delegateXmlModelChanged(LayoutEditorDelegate.java:402)
+	at com.android.ide.eclipse.adt.internal.editors.common.CommonXmlEditor.xmlModelChanged(CommonXmlEditor.java:329)
+	at com.android.ide.eclipse.adt.internal.editors.AndroidXmlEditor$XmlModelStateListener.modelChanged(AndroidXmlEditor.java:1653)
+	at com.android.ide.eclipse.adt.internal.editors.AndroidXmlEditor.wrapEditXmlModel(AndroidXmlEditor.java:1114)
+	at com.android.ide.eclipse.adt.internal.editors.AndroidXmlEditor.wrapUndoEditXmlModel(AndroidXmlEditor.java:1190)
+	at com.android.ide.eclipse.adt.internal.editors.layout.properties.XmlProperty.setValue(XmlProperty.java:232)
+	at com.android.ide.eclipse.adt.internal.editors.layout.properties.XmlPropertyEditor.setEditorText(XmlPropertyEditor.java:375)
+	at org.eclipse.wb.internal.core.model.property.editor.AbstractTextPropertyEditor.toProperty(AbstractTextPropertyEditor.java:330)
+	at org.eclipse.wb.internal.core.model.property.editor.AbstractTextPropertyEditor.deactivate(AbstractTextPropertyEditor.java:222)
+	at org.eclipse.wb.internal.core.model.property.table.PropertyTable.deactivateEditor(PropertyTable.java:594)
+	at org.eclipse.wb.internal.core.model.property.table.PropertyTable.handleMouseDown(PropertyTable.java:394)
+	at org.eclipse.wb.internal.core.model.property.table.PropertyTable.access$400(PropertyTable.java:64)
+	at org.eclipse.wb.internal.core.model.property.table.PropertyTable$5.mouseDown(PropertyTable.java:200)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:192)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1053)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4169)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3758)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1053)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:942)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:86)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:588)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:543)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:51.201
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:51.205
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:51.209
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2014-12-08 00:47:55.664
+!MESSAGE 
+!STACK 0
+org.eclipse.e4.core.di.InjectionException: org.eclipse.core.commands.NotHandledException: There is no handler to execute for command org.eclipse.ui.edit.undo
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:63)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invokeUsingClass(InjectorImpl.java:231)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invoke(InjectorImpl.java:212)
+	at org.eclipse.e4.core.contexts.ContextInjectionFactory.invoke(ContextInjectionFactory.java:131)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceImpl.executeHandler(HandlerServiceImpl.java:171)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.executeCommand(KeyBindingDispatcher.java:277)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.press(KeyBindingDispatcher.java:496)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.processKeyEvent(KeyBindingDispatcher.java:547)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.filterKeySequenceBindings(KeyBindingDispatcher.java:368)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.access$0(KeyBindingDispatcher.java:314)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher$KeyDownFilter.handleEvent(KeyBindingDispatcher.java:83)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.filterEvent(Display.java:1262)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1052)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1077)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1062)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1104)
+	at org.eclipse.swt.widgets.Text.sendKeyEvent(Text.java:1704)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1100)
+	at org.eclipse.swt.widgets.Widget.wmChar(Widget.java:1521)
+	at org.eclipse.swt.widgets.Control.WM_CHAR(Control.java:4640)
+	at org.eclipse.swt.widgets.Text.WM_CHAR(Text.java:2584)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4528)
+	at org.eclipse.swt.widgets.Text.windowProc(Text.java:2570)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:4976)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2546)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3756)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1053)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:942)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:86)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:588)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:543)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+Caused by: org.eclipse.core.commands.NotHandledException: There is no handler to execute for command org.eclipse.ui.edit.undo
+	at org.eclipse.ui.internal.handlers.E4HandlerProxy.execute(E4HandlerProxy.java:84)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:56)
+	... 48 more
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:56.977
+!MESSAGE activity_create_post.xml: Failed to convert 230dp into a drawable
+!STACK 0
+java.lang.NumberFormatException: Color value '230dp' must start with #
+	at com.android.layoutlib.bridge.impl.ResourceHelper.getColor(ResourceHelper.java:72)
+	at com.android.layoutlib.bridge.impl.ResourceHelper.getDrawable(ResourceHelper.java:252)
+	at android.content.res.BridgeTypedArray.getDrawable(BridgeTypedArray.java:666)
+	at android.widget.ImageView.<init>(ImageView.java:146)
+	at android.widget.ImageView.<init>(ImageView.java:135)
+	at android.widget.ImageView.<init>(ImageView.java:131)
+	at sun.reflect.GeneratedConstructorAccessor20.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at android.view.LayoutInflater.createView(LayoutInflater.java:607)
+	at android.view.BridgeInflater.onCreateView(BridgeInflater.java:82)
+	at android.view.LayoutInflater.onCreateView(LayoutInflater.java:682)
+	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:741)
+	at android.view.BridgeInflater.createViewFromTag(BridgeInflater.java:128)
+	at android.view.LayoutInflater.rInflate_Original(LayoutInflater.java:806)
+	at android.view.LayoutInflater_Delegate.rInflate(LayoutInflater_Delegate.java:64)
+	at android.view.LayoutInflater.rInflate(LayoutInflater.java:782)
+	at android.view.LayoutInflater.rInflate_Original(LayoutInflater.java:809)
+	at android.view.LayoutInflater_Delegate.rInflate(LayoutInflater_Delegate.java:64)
+	at android.view.LayoutInflater.rInflate(LayoutInflater.java:782)
+	at android.view.LayoutInflater.inflate(LayoutInflater.java:504)
+	at android.view.LayoutInflater.inflate(LayoutInflater.java:385)
+	at com.android.layoutlib.bridge.impl.RenderSessionImpl.inflate(RenderSessionImpl.java:401)
+	at com.android.layoutlib.bridge.Bridge.createSession(Bridge.java:329)
+	at com.android.ide.common.rendering.LayoutLibrary.createSession(LayoutLibrary.java:332)
+	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.RenderService.createRenderSession(RenderService.java:517)
+	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.GraphicalEditorPart.renderWithBridge(GraphicalEditorPart.java:1584)
+	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.GraphicalEditorPart.recomputeLayout(GraphicalEditorPart.java:1309)
+	at com.android.ide.eclipse.adt.internal.editors.layout.LayoutEditorDelegate.recomputeLayout(LayoutEditorDelegate.java:410)
+	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.SelectionManager.selectSingle(SelectionManager.java:487)
+	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.SelectionManager.select(SelectionManager.java:442)
+	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.GestureManager$Listener.mouseUp(GestureManager.java:477)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:220)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1053)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4169)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3758)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1053)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:942)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:86)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:588)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:543)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:56.984
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:56.987
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:56.991
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:59.356
+!MESSAGE activity_create_post.xml: Failed to convert 230dp into a drawable
+!STACK 0
+java.lang.NumberFormatException: Color value '230dp' must start with #
+	at com.android.layoutlib.bridge.impl.ResourceHelper.getColor(ResourceHelper.java:72)
+	at com.android.layoutlib.bridge.impl.ResourceHelper.getDrawable(ResourceHelper.java:252)
+	at android.content.res.BridgeTypedArray.getDrawable(BridgeTypedArray.java:666)
+	at android.widget.ImageView.<init>(ImageView.java:146)
+	at android.widget.ImageView.<init>(ImageView.java:135)
+	at android.widget.ImageView.<init>(ImageView.java:131)
+	at sun.reflect.GeneratedConstructorAccessor20.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at android.view.LayoutInflater.createView(LayoutInflater.java:607)
+	at android.view.BridgeInflater.onCreateView(BridgeInflater.java:82)
+	at android.view.LayoutInflater.onCreateView(LayoutInflater.java:682)
+	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:741)
+	at android.view.BridgeInflater.createViewFromTag(BridgeInflater.java:128)
+	at android.view.LayoutInflater.rInflate_Original(LayoutInflater.java:806)
+	at android.view.LayoutInflater_Delegate.rInflate(LayoutInflater_Delegate.java:64)
+	at android.view.LayoutInflater.rInflate(LayoutInflater.java:782)
+	at android.view.LayoutInflater.rInflate_Original(LayoutInflater.java:809)
+	at android.view.LayoutInflater_Delegate.rInflate(LayoutInflater_Delegate.java:64)
+	at android.view.LayoutInflater.rInflate(LayoutInflater.java:782)
+	at android.view.LayoutInflater.inflate(LayoutInflater.java:504)
+	at android.view.LayoutInflater.inflate(LayoutInflater.java:385)
+	at com.android.layoutlib.bridge.impl.RenderSessionImpl.inflate(RenderSessionImpl.java:401)
+	at com.android.layoutlib.bridge.Bridge.createSession(Bridge.java:329)
+	at com.android.ide.common.rendering.LayoutLibrary.createSession(LayoutLibrary.java:332)
+	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.RenderService.createRenderSession(RenderService.java:517)
+	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.GraphicalEditorPart.renderWithBridge(GraphicalEditorPart.java:1584)
+	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.GraphicalEditorPart.recomputeLayout(GraphicalEditorPart.java:1309)
+	at com.android.ide.eclipse.adt.internal.editors.layout.LayoutEditorDelegate.recomputeLayout(LayoutEditorDelegate.java:410)
+	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.SelectionManager.setSelection(SelectionManager.java:285)
+	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.GraphicalEditorPart$2.selectionChanged(GraphicalEditorPart.java:519)
+	at org.eclipse.ui.views.contentoutline.ContentOutlinePage$1.run(ContentOutlinePage.java:112)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.views.contentoutline.ContentOutlinePage.fireSelectionChanged(ContentOutlinePage.java:110)
+	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.OutlinePage.fireSelectionChanged(OutlinePage.java:613)
+	at org.eclipse.ui.views.contentoutline.ContentOutlinePage.selectionChanged(ContentOutlinePage.java:170)
+	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.OutlinePage.selectionChanged(OutlinePage.java:650)
+	at org.eclipse.jface.viewers.Viewer$2.run(Viewer.java:164)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.JFaceUtil$1.run(JFaceUtil.java:49)
+	at org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:175)
+	at org.eclipse.jface.viewers.Viewer.fireSelectionChanged(Viewer.java:162)
+	at org.eclipse.jface.viewers.StructuredViewer.updateSelection(StructuredViewer.java:2188)
+	at org.eclipse.jface.viewers.StructuredViewer.handleSelect(StructuredViewer.java:1211)
+	at org.eclipse.jface.viewers.StructuredViewer$4.widgetSelected(StructuredViewer.java:1241)
+	at org.eclipse.jface.util.OpenStrategy.fireSelectionEvent(OpenStrategy.java:239)
+	at org.eclipse.jface.util.OpenStrategy.access$4(OpenStrategy.java:233)
+	at org.eclipse.jface.util.OpenStrategy$1.handleEvent(OpenStrategy.java:403)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1053)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4169)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3758)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1053)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:942)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:86)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:588)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:543)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:59.363
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:59.367
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:47:59.370
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:48:00.574
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:48:00.578
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:48:00.581
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:48:05.024
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:48:05.027
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:48:05.030
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:48:11.374
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:48:11.378
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:48:11.381
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:48:11.898
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:48:11.920
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:48:11.925
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:48:17.225
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:48:17.228
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:48:17.232
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:25.787
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:25.792
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:25.797
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:26.444
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:26.448
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:26.451
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:28.424
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:28.428
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:28.431
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:29.625
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:29.628
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:29.632
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:29.858
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:29.861
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:29.865
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:45.524
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:45.527
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:45.531
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:54.209
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:54.212
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:54.215
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:55.955
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:55.959
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:55.962
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:58.367
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:58.371
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:58.374
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:58.825
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:58.832
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:51:58.837
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:54:16.158
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:54:16.161
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:54:16.164
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:57:53.291
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:57:53.294
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:57:53.298
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:57:58.892
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:57:58.896
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:57:58.900
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:58:05.213
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:58:05.217
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:58:05.221
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:58:14.404
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:58:14.410
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:58:14.416
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:58:20.865
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:58:20.870
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:58:20.876
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:58:21.303
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:58:21.307
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-12-08 00:58:21.313
+!MESSAGE activity_create_post.xml: Path.isConvex is not supported.

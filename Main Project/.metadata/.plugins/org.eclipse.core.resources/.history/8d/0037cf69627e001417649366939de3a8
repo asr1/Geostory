@@ -1,0 +1,93 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@color/green"
+    tools:context=".MainActivity" >
+
+     <AbsoluteLayout
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content" >
+
+         <Button
+             android:id="@+id/button12"
+             android:layout_width="324dp"
+             android:layout_height="204dp"
+             android:layout_x="3dp"
+             android:layout_y="74dp"
+             android:background="@drawable/buttonbackyellow"
+             android:textColor="#FFFFFF"
+             android:textSize="20sp" />
+
+         <Button
+             android:id="@+id/loginButton"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="29dp"
+             android:layout_x="100dp"
+             android:layout_y="214dp"
+             android:onClick="login"
+             android:text="@string/Login" />
+
+         <TextView
+             android:id="@+id/textView1"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_x="109dp"
+             android:layout_y="32dp"
+             android:text="Login"
+             android:textAppearance="?android:attr/textAppearanceLarge" />
+
+         <EditText
+             android:id="@+id/usernameField"
+             android:layout_width="190dp"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="32dp"
+             android:layout_x="123dp"
+             android:layout_y="107dp"
+             android:ems="10"
+             tools:ignore="RtlHardcoded" >
+
+             <requestFocus />
+         </EditText>
+
+         <TextView
+             android:id="@+id/textView3"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="38dp"
+             android:layout_x="29dp"
+             android:layout_y="170dp"
+             android:text="@string/password"
+             android:textAppearance="?android:attr/textAppearanceMedium" />
+
+         <TextView
+             android:id="@+id/textView2"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="50dp"
+             android:layout_x="32dp"
+             android:layout_y="113dp"
+             android:text="@string/username"
+             android:textAppearance="?android:attr/textAppearanceMedium" />
+
+         	     <ImageView
+	         android:id="@+id/imageView1"
+	         android:layout_width="399dp"
+	         android:layout_height="wrap_content"
+	         android:layout_x="-20dp"
+	         android:layout_y="-22dp"
+	         android:src="@drawable/titlebar" />
+
+         	     <EditText
+         	         android:id="@+id/passwordField"
+         	         android:layout_width="190dp"
+         	         android:layout_height="match_parent"
+         	         android:layout_x="168dp"
+         	         android:layout_y="157dp"
+         	         android:ems="10"
+         	         android:inputType="textPassword" />
+         
+     </AbsoluteLayout>
+   
+</LinearLayout>
